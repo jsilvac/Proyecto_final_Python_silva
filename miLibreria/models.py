@@ -13,7 +13,7 @@ class libro(models.Model):
     disponible = models.BooleanField(False)
 
 class cliente(models.Model):
-    id_Cli = models.IntegerField(max_length=10000)
+    id_Cli = models.IntegerField
     nombreCli = models.CharField(max_length=200)
     correoCli = models.EmailField(max_length=200)
 
