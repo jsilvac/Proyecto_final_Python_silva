@@ -1,0 +1,28 @@
+
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block titulo %}  Gestion de Prestamo libros{% endblock titulo %}
+
+{% block descripcion_titulo %} Resultados de la busqueda de tu libro {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    {% if libros %}
+        
+        <h1>Resutados de tu busqueda</h1><br>
+        <ol>
+            {% for lib in libros %}
+            
+            <li>{{ lib }}</li>
+            
+        {% endfor %}
+        </ol>
+
+    {% else %}
+        <h3>No existen coincidencias, vuelve atrás he intentalo nuevamente</h3>
+    {% endif %}
+
+{% endblock contenido_que_cambia %}
+

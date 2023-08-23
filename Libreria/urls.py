@@ -19,6 +19,6 @@ from miLibreria.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('',inicio),
+    path('',inicio,name = "inicio"),
     path('milibreria/', include('miLibreria.urls')),
 ]

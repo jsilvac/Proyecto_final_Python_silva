@@ -1,0 +1,43 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block titulo %}  Gestion de Trabajadores{% endblock titulo %}
+
+{% block descripcion_titulo %} En esta página, podremos crear los nuevos trabajadores de Libreria Coder {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <h1>Formulario Trabajadores</h1>
+
+    <form action="{% url 'trabajadores' %}" method="POST"> {% csrf_token %}
+
+        <table>
+            {{ formulario.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Agregar">
+        
+    </form>
+    <br>
+    <h3>{{ mensaje }}</h3> 
+
+{% endblock contenido_que_cambia %}
+
+{% block descripcion_final %}
+
+   {% if trabajador %}
+        <br>
+        <h4>Listado de Trabajadores</h4>
+
+        <ul>
+            {% for emp in trabajador %}
+                <li>{{ emp }}</li>
+            {% endfor %} 
+        </ul>
+    
+    {% endif %} 
+
+
+
+{% endblock descripcion_final %}

@@ -1,0 +1,27 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block titulo %}  Gestion de Libros{% endblock titulo %}
+
+{% block descripcion_titulo %} Esta pagina, podremos buscar los libros de nuestra libreria Coder {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <form action="{% url 'buscar' %}" method="GET" >
+
+        <input type="text" name="isbn" id="isbn" placeholder="Ingresar isbn libro">
+        <input type="submit" value="Buscar">
+
+    </form>
+
+    <h2>{{ mensaje }}</h2>
+
+{% endblock contenido_que_cambia %}
+
+{% block descripcion_final %}
+
+
+
+{% endblock descripcion_final %}
+
