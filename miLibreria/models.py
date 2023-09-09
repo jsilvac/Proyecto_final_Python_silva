@@ -9,14 +9,14 @@ class libro(models.Model):
     nombreLi = models.CharField(max_length=100)
     autorLi = models.CharField(max_length=200)
     categoriaLi = models.CharField(max_length=100)
-    isbn = models.CharField(max_length=50)
+    isbn = models.CharField(primary_key=True, max_length=50)
     disponible = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Nombre: {self.nombreLi} - ISBN: {self.isbn} "
 
 class cliente(models.Model):
-    numeroCli = models.AutoField(primary_key=True, default=0)
+    numeroCli = models.AutoField(primary_key=True)
     nombreCli = models.CharField(max_length=200)
     correoCli = models.EmailField(max_length=200)
 

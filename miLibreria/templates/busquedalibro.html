@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block tituloPagina %}
+    Libros - Librería Coder
+{% endblock tituloPagina %}
+
 {% block titulo %}  Gestion de Libros{% endblock titulo %}
 
 {% block descripcion_titulo %} Esta pagina, podremos buscar los libros de nuestra libreria Coder {% endblock %}
@@ -9,10 +13,15 @@
 {% block contenido_que_cambia %}
 
     <form action="{% url 'buscar' %}" method="GET" >
-
+        <label for="isbn">Búsqueda por el ISBN</label>
         <input type="text" name="isbn" id="isbn" placeholder="Ingresar isbn libro">
-        <input type="submit" value="Buscar">
+        <input type="submit" value="Buscar isbn"><br>
 
+    </form>
+    <form action="{% url 'buscarXNombre' %}" method="GET">
+        <label for="nombreLi">Búsqueda por Nombre</label>
+        <input type="text" name="nombreLi" id="nombreLi" placeholder="Ingresar nombre del libro">
+        <input type="submit" value="Buscar nombre">
     </form>
 
     <h2>{{ mensaje }}</h2>

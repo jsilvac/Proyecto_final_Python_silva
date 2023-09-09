@@ -11,6 +11,12 @@ Este proyecto en el cual utilizamos Python y Django, esta orientado en la admini
 - Usuario: admin
 - Contraseña: a1313
 
+- Csuario : usuario
+- Contraseña : !7ZQ#CMeC+s9*2u
+
+- Usuario : coder
+- Contrasña : *coder_12345
+
 ##Descripción de estructura de carpetas y archivos :
 
 ### Rutas

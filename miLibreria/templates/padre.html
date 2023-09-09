@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Creative - Start Bootstrap Theme</title>
+        <title>{% block tituloPagina %}{% endblock tituloPagina %}</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap Icons-->
@@ -17,7 +17,7 @@
         <!-- SimpleLightbox plugin CSS-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" /> 
+        {% comment %} <link href="css/styles.css" rel="stylesheet" />  {% endcomment %}
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     </head>
     <body id="page-top">
@@ -30,10 +30,14 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'libros' %}">Libros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'clientes' %}">Clientes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'trabajadores' %}">Empleado</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'clientes_list' %}">Clientes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'disponible' %}">Disponible</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'busquedalibro' %}">Buscar libros</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -94,7 +98,7 @@
         <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        {% comment %} <script src="js/scripts.js"></script> {% endcomment %}
         <script src="{% static 'js/scripts.js' %}"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->

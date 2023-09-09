@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block tituloPagina %}
+    Libros - Librería Coder
+{% endblock tituloPagina %}
+
 {% block titulo %}  Gestion de Libros{% endblock titulo %}
 
 {% block descripcion_titulo %} Esta pagina, podremos crear los libros de nuestra libreria Coder {% endblock %}
@@ -10,7 +14,7 @@
 
     <h1>Formulario Libros</h1>
 
-    <form action="{% url 'libros' %}" method="POST"> {% csrf_token %}
+    <form class="formlibro" action="{% url 'libros' %}" method="POST"> {% csrf_token %}
 
         <table>
             {{ formulario.as_table }}
@@ -29,11 +33,47 @@
         <br>
         <h4>Listado de Libros</h4>
 
-        <ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Nombre</th>
+                    <th>Autor</th>
+                    <th>Categoria</th>
+                    <th>Disponible</th>
+                </tr>
+            </thead>
+
             {% for lib in libros %}
-                <li>{{ lib }}</li>
+
+                <tbody>
+
+                    <td>
+                        {{ lib.isbn }}  
+                    </td>
+                    <td>
+                        {{ lib.nombreLi }}  
+                    </td>
+                    <td>
+                        {{ lib.autorLi }}  
+                    </td>
+
+                    <td>
+                        {{ lib.categoriaLi }}  
+                    </td>
+                    <td>
+                        {{ lib.disponible }}  
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'eliminarlibro'  lib.isbn %}">❌</a>
+                        <a class="btn btn-succes" href="{% url  'editarlibro' lib.isbn %}">🔄</a>
+                    </td>
+                </tbody>
+       
             {% endfor %} 
-        </ul>
+        </table>
+
+        {{ mensaje }}
     
     {% endif %} 
 

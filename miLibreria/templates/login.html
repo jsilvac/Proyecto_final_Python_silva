@@ -1,0 +1,30 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block tituloPagina %}
+    Login - Librería Coder
+{% endblock tituloPagina %}
+
+{% block titulo %}  Tu Librería Coder {% endblock titulo %}
+
+{% block descripcion_titulo %} Este es un proyecto de CoderHouse, donde aprederemos la utilizacion del Framework Django junto Python {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <h1>Login</h1>
+    <br>
+
+    <h3>{{ mensaje }}</h3>
+
+    <br>
+    <form action="{% url 'login' %}" method="post"> {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Ingresar">
+    </form>
+
+{% endblock contenido_que_cambia %}
+

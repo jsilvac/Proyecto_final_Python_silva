@@ -1,0 +1,43 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block tituloPagina %}
+    Clientes - Librería Coder
+{% endblock tituloPagina %}
+
+{% block titulo %}  Gestión de Clientes {% endblock titulo %}
+
+{% block descripcion_titulo %} Este es un proyecto de CoderHouse, donde aprederemos la utilizacion del Framework Django junto Python {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <h2>Formulario Clientes</h2>
+
+    <form action="{% url 'clientes' %}" method="post"> {% csrf_token %}
+        <table>
+            {{ formulario.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Guardar">
+
+    </form>
+    <br>
+    <h3>{{ mensaje }}</h3> 
+{% endblock %}
+
+{% block descripcion_final %}
+
+   {% if clientes %}
+        <br>
+        <h4>Listado de Clientes</h4>
+
+        <ul>
+            {% for cli in clientes %}
+                <li>{{ cli }}</li>
+            {% endfor %} 
+        </ul>
+    
+    {% endif %} 
+
+{% endblock descripcion_final %}

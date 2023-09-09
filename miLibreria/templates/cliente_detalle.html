@@ -1,0 +1,18 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block titulo %}  Formulario Gestión de Clientes {% endblock titulo %}
+
+{% block descripcion_titulo %} En esta página, administraremos a los clientes de librería Coder {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <h1>Detalle Clientes</h1>
+
+    <p>ID : <i>{{  cliente.numeroCli }}</i></p>
+    <p>Nombre : <i>{{ cliente.nombreCli }}</i></p>
+    <p>Corrreo : <i>{{ cliente.correoCli }}</i></p>
+    
+
+{% endblock contenido_que_cambia %}

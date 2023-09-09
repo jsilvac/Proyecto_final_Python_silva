@@ -1,0 +1,34 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block tituloPagina %}
+    Libros - Librería Coder
+{% endblock tituloPagina %}
+
+{% block titulo %}  Gestion de Libros{% endblock titulo %}
+
+{% block descripcion_titulo %} Esta pagina, podremos crear los libros de nuestra libreria Coder {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <h1>Editando libro ➡️ "{{ libros.nombreLi }}"</h1>
+
+    <form action="{% url 'editarlibro' libros.isbn %}" method="POST"> {% csrf_token %}
+
+        <table>
+            {{ formulario.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Editar">
+    </form> 
+    <br>
+    
+
+{% endblock contenido_que_cambia %}
+
+{% block descripcion_final %}
+
+
+{% endblock descripcion_final %}
+

@@ -1,0 +1,26 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block tituloPagina %}
+    Clientes - Librería Coder
+{% endblock tituloPagina %}
+
+{% block titulo %}  Formulario Gestión de Clientes {% endblock titulo %}
+
+{% block descripcion_titulo %} En esta página, administraremos a los clientes de librería Coder {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <h1>Formulario Clientes</h1>
+
+    <form method="POST"> {% csrf_token %}
+        
+            {{ form.as_p }}
+        
+        <input type="submit" value="Guardar">
+
+    </form>
+    
+
+{% endblock contenido_que_cambia %}

@@ -1,0 +1,18 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block titulo %}  Gestión de Clientes {% endblock titulo %}
+
+{% block descripcion_titulo %} En esta página, administraremos a los clientes de librería Coder {% endblock %}
+
+{% block contenido_que_cambia %}
+    
+    <h4>Confirmacion borrado de Clientes</h4>
+
+    <form action="" method="post"> {% csrf_token %}
+        Estas seguro que deseas eliminar a "{{ object }}" de Clientes?
+        <input type="submit" value="SI">
+    </form>
+
+{% endblock contenido_que_cambia %}
