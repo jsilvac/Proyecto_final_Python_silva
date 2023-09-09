@@ -1,6 +1,6 @@
-# python_Tercera_pre-entrega_silva
+# Proyecto_final_Python_silva
 
-###tercera pre-entrega utilizando Python y Django.
+###Entrega Final Python y utilizando Django.
 
 ## Descripción del Proyecto
 
