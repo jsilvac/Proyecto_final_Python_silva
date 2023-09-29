@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . models import trabajador,cliente,libro
 from django.http import HttpResponse
-from .forms import ClienteForm,TrabajadorForm,LibroForm, RegistroUsuarioForm
+from .forms import ClienteForm,TrabajadorForm,LibroForm, RegistroUsuarioForm,RegistroUsuarioForm
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth import login,authenticate
@@ -223,3 +223,20 @@ def register(request):
     else:
         form = RegistroUsuarioForm()
         return render(request, "register.html", {"form":form})
+    
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+
+    if request.method == "POST":
+        form = RegistroUsuarioForm(request.POST, instance=usuario)
+        if form.is_valid():
+            usuario.save()
+            return render(request, "inicio.html",{"mensaje":f"Usuario {usuario.username} actualizado correctamente!"})
+        else:
+            return render(request, "editarPerfil.html", {"form":form, "nombreusuario":usuario.username, "mensaje":"Datos inválidos"})
+    else:
+        form=RegistroUsuarioForm(instance=usuario)    
+        return render(request, "editarPerfil.html", {"form": form, "nombreusuario": usuario.username})
+
+

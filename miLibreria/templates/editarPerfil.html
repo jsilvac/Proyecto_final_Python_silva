@@ -1,0 +1,34 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block tituloPagina %}
+    Libros - Librería Coder
+{% endblock tituloPagina %}
+
+{% block titulo %}  Gestion de Libros{% endblock titulo %}
+
+{% block descripcion_titulo %} Esta pagina, usted podra editar su perfil {% endblock %}
+
+{% block contenido_que_cambia %}
+
+    <h1>Editando perfil de usuario"</h1>
+
+    <form action="{% url 'editarPerfil'  %}" method="POST"> {% csrf_token %}
+
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <input type="submit" value="Guardar cambios">
+    </form> 
+    <br>
+    
+
+{% endblock contenido_que_cambia %}
+
+{% block descripcion_final %}
+
+
+{% endblock descripcion_final %}
+
