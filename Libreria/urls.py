@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from miLibreria.views import *
+from mensajeria.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',inicio,name = "inicio"),
     path('milibreria/', include('miLibreria.urls')),
+    path('milibreria/', include('mensajeria.urls')),
 ]

@@ -48,7 +48,7 @@ def buscarXNombre(request):
     else:
         return render(request,"busquedalibro.html", {"mensaje":"No me has ingresado nada"})
 
-
+@login_required
 def clientes(request):
     if request.method == "POST":
         form= ClienteForm(request.POST)
@@ -68,7 +68,7 @@ def clientes(request):
     return render(request,"clientes.html", {"formulario" : formulario_cliente})
 
 
-class ClientesList(ListView):
+class ClientesList(LoginRequiredMixin,ListView):
     model = cliente
     template_name = "clientes.html"
 
@@ -94,7 +94,7 @@ class ClienteUpdate(LoginRequiredMixin,UpdateView):
     success_url = reverse_lazy("clientes_list")
     template_name = 'cliente_form.html'
 
-
+@login_required
 def libros(request):
     if request.method =='POST':
         form = LibroForm(request.POST)
@@ -124,7 +124,7 @@ def libros(request):
         libros_list = libro.objects.all()
     return render(request,"libros.html", {"formulario":formulario_libros,"libros": libros_list})
     
-
+@login_required
 def trabajadores(request):
     if request.method =='POST':
         form = TrabajadorForm(request.POST)
@@ -159,6 +159,7 @@ def eliminarlibro(request,isbn):
     libros_list = libro.objects.all()
     return render(request,'libros.html', {"mensaje":mensaje, "formulario":formulario_libros, "libros": libros_list})
 
+@login_required
 def editarlibro(request,isbn):
     book = libro.objects.get(isbn=isbn)
     print(isbn)
@@ -207,7 +208,7 @@ def login_request(request):
              return render(request,"login.html", {"form":form,"mensaje":"Datos inválidos...!"})
     else:
         form= AuthenticationForm()
-        return render(request,"login.html", {"form":form,"mensaje":"fue por get"})
+        return render(request,"login.html", {"form":form})
     
 def register(request):
     if request.method == "POST":
