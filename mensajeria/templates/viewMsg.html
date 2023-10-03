@@ -1,0 +1,46 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block tituloPagina %}
+    Libros - Librería Coder
+{% endblock tituloPagina %}
+
+
+{% block titulo %}  Gestion de Libros{% endblock titulo %}
+
+{% block descripcion_titulo %} Esta pagina, podremos crear los libros de nuestra libreria Coder {% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+    <h2>Mensajería</h2><br>
+    <div class='container mt-5' >
+
+        <div class='row justify-content-start text-left'>
+            <div id=msgCard class='col-8 justify-content-start '>
+                <div><p><span class="font-weight-bold h3 text-white">Fecha: </span> {{msg.date}}</p>  </div>
+                <div><p><span class="font-weight-bold h3 text-white">De: </span> {{msg.author}}</p></div>
+                <div><p><span class="font-weight-bold h3 text-white">Mensaje: </span>{{msg.message}}</p></div>
+                
+                <div class="container text-center">
+                    <a href="{% url 'delMsg' msg.id %}"><button class='btn btn-danger m-1'>Borrar</button></a>
+                <a href="{% url 'messages' %}"><button class='btn btn-success m-1'>Volver</button></a>
+                </div>
+        
+            </div>
+
+        </div>
+
+    </div>
+   
+
+{% endblock contenido_que_cambia %}
+
+
+
+{% block descripcion_final %}
+
+
+{% endblock descripcion_final %}
+

@@ -197,11 +197,10 @@ def login_request(request):
             info=form.cleaned_data
             usu=info['username']
             pas=info["password"]
-            print(usu +" "+pas)
             usuario=authenticate(username=usu, password=pas)    
             if usuario is not None:
                 login(request, usuario)
-                return render(request,"login.html", {"mensaje":f"Usuario {usu} logueado correctamente"})
+                return render(request,"inicio.html", {"mensaje":f"Usuario {usu} logueado correctamente"})
             else:
                 return render(request,"login.html", {"form":form,"mensaje":"Datos inválidos...!"})
         else:

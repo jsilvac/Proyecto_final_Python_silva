@@ -36,10 +36,11 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'disponible' %}">Disponible</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'busquedalibro' %}">Buscar libros</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'editarPerfil' %}">Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'messages' %}">Mensajes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                         
                         {% else %}
-
+                            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Regitrate</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
 
                         {% endif %}

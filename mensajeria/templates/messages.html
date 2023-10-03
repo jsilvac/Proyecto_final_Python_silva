@@ -1,0 +1,86 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block tituloPagina %}
+    Libros - Librería Coder
+{% endblock tituloPagina %}
+
+
+{% block titulo %}  Gestion de Libros{% endblock titulo %}
+
+{% block descripcion_titulo %} Esta pagina, podremos crear los libros de nuestra libreria Coder {% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+    <h2>Mensajería</h2><br>
+
+    <div id="new-msg-container">
+        <form id="msg-form" action="{% url 'messages' %}" method="POST"> {% csrf_token %}
+
+        {{form.as_p}}
+
+        <button type="submit" class="btn btn-primary btn-sm">Enviar Mensaje</button>
+        
+        <p>{{mensaje}}</p>
+    </form>
+
+
+    </div>
+
+    <div id="all-msg-container">
+
+
+    
+    {% if allMessages %}
+        
+        <table class="table table-success table-striped">
+
+            <thead>
+                <tr>
+                
+                <th scope="col">De</th>
+                <th scope="col">Mensaje</th>
+                <th scope="col">Fecha</th>
+                <th scope="col"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                
+                
+                {% for msg in allMessages  %}
+
+                    <tr>
+                <td><a href="{% url 'viewMsg' msg.id %}">{{msg.author}}</a></td>
+                <td><a href="{% url 'viewMsg' msg.id %}">{{msg.message}}</a></td>
+                <td><a href="{% url 'viewMsg' msg.id %}">{{msg.date}}</a></td>
+                <td><a href="{% url 'viewMsg' msg.id %}"><button class="btn btn-success btn-sm">Delete</button></a></td>
+
+                </tr>
+                    
+                {% endfor %}
+                    
+        
+
+            </tbody>
+        </table>
+    {% else %}
+    <p>Usted no tiene mensajes</p>
+    {% endif %}
+        
+
+    </div>
+
+
+{% endblock contenido_que_cambia %}
+
+
+
+
+{% block descripcion_final %}
+
+
+{% endblock descripcion_final %}
+
